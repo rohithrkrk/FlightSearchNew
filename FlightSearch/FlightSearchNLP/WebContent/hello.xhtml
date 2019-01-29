@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+ 
+
+<h:head>
+	<title>JSF 2.0 Hello World</title>
+
+</h:head>
+<h:body>
+
+<link rel="stylesheet" type="text/css" href="record.css"></link>
+ <!-- <h:outputScript library="js" name="" target="app.js"  />  -->
+ <!--  <h:outputScript library="js"  target="recorder.js" />  -->
+	<h3>JSF 2.0 Hello World Example - hello.xhtml</h3>
+	<h:form>
+		<h:inputText value="#{helloBean.name}"></h:inputText>
+		<h:commandButton value="Welcome Me" action="welcomes" ></h:commandButton>
+		<!-- <h:button onclick="startRecording(this);">Record</h:button>
+		<h:button onclick="stopRecording(this);">Stop</h:button>
+  -->
+  </h:form>
+   <form action="../record" id="recordForm" method="post">  
+ <div id="controls">
+ 
+  	 <button id="recordButton" type="submit" value="testbutton">Record</button>
+  	 <button id="pauseButton" >Pause</button>
+  	 <button id="stopButton" >Stop</button>
+    </div>
+     </form>  
+    <div id="formats">Format: start recording to see sample rate</div>
+  	<h3>Recordings</h3>
+  	<ol id="recordingsList"></ol>
+	
+	<script type="text/javascript" 
+src="jquery.js" />
+	<script type="text/javascript" 
+src="app.js" />
+<script type="text/javascript" 
+src="recorder.js" />
+</h:body>
+</html>
