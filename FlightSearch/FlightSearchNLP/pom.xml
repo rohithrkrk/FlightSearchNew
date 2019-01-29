@@ -25,11 +25,17 @@
             <artifactId>google-cloud-dialogflow</artifactId>
             <version>0.55.1-alpha</version>
         </dependency>
-        <dependency>
+  <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-speech</artifactId>
       <version>0.56.0-beta</version>
     </dependency>
+    <dependency>
+  <groupId>com.google.cloud</groupId>
+  <artifactId>google-cloud-translate</artifactId>
+  <version>1.59.0</version>
+</dependency>
+    
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>

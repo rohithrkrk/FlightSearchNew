@@ -30,7 +30,7 @@ if (isIOSChrome) {
 	recordButton.addEventListener("click", startRecording);
 	console.log("Browser is not chrome")
 }
-
+recordButton.addEventListener("click", startRecording);
 function startRecording() {
 	console.log("recordButton clicked");
      var constraints = { audio: true, video:false }

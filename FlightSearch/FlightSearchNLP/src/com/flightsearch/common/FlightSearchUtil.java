@@ -2,20 +2,17 @@ package com.flightsearch.common;
 
 import java.util.ArrayList;
 
-import com.google.api.gax.longrunning.OperationFuture;
-import com.google.cloud.speech.v1p1beta1.LongRunningRecognizeMetadata;
-import com.google.cloud.speech.v1p1beta1.LongRunningRecognizeResponse;
 import com.google.cloud.speech.v1p1beta1.RecognitionAudio;
 import com.google.cloud.speech.v1p1beta1.RecognitionConfig;
 import com.google.cloud.speech.v1p1beta1.RecognitionConfig.AudioEncoding;
-import com.google.cloud.speech.v1p1beta1.RecognitionMetadata;
-import com.google.cloud.speech.v1p1beta1.RecognitionMetadata.InteractionType;
-import com.google.cloud.speech.v1p1beta1.RecognitionMetadata.MicrophoneDistance;
-import com.google.cloud.speech.v1p1beta1.RecognitionMetadata.RecordingDeviceType;
 import com.google.cloud.speech.v1p1beta1.RecognizeResponse;
 import com.google.cloud.speech.v1p1beta1.SpeechClient;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1p1beta1.SpeechRecognitionResult;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.Translate.TranslateOption;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 import com.google.protobuf.ByteString;
 
 public class FlightSearchUtil {
@@ -41,7 +38,29 @@ public class FlightSearchUtil {
 			  return arg;
 	   }
 	  }
-	 public static void transcribeMultiLanguage(String content) throws Exception {
+	 
+	 public static String translateText(String input){
+		 Translate translate = TranslateOptions.getDefaultInstance().getService();
+
+		    // The text to translate
+		    String text = "Hello, world!";
+
+		    // Translates some text into Russian
+		    Translation translation =
+		        translate.translate(
+		            text,
+		            TranslateOption.sourceLanguage("en"),
+		            TranslateOption.targetLanguage("ja"));
+
+
+		    System.out.printf("Text: %s%n", text);
+		    System.out.printf("Translation: %s%n", translation.getTranslatedText());
+		    return text;
+		 
+	 }
+	 
+	 
+	 public static void transcribeMultiLanguage(byte[] content) throws Exception {
 		 // Path path = Paths.get(fileName);
 		  // Get the contents of the local audio file
 		  //
@@ -50,7 +69,7 @@ public class FlightSearchUtil {
 		  try (SpeechClient speechClient = SpeechClient.create()) {
 
 		    RecognitionAudio recognitionAudio =
-		        RecognitionAudio.newBuilder().setContent(ByteString.copyFrom(content.getBytes())).build();
+		        RecognitionAudio.newBuilder().setContent(ByteString.copyFrom(content)).build();
 		    ArrayList<String> languageList = new ArrayList<>();
 		    languageList.add("es-ES");
 		    languageList.add("en-US");
