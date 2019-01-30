@@ -18,4 +18,13 @@
     <servlet-name>recordData</servlet-name>
     <url-pattern>/record</url-pattern>
   </servlet-mapping>
+  <servlet>
+		<servlet-name>witServlet</servlet-name>
+		<servlet-class>com.flightsearch.witapi.WitServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		<servlet-mapping>
+		<servlet-name>witServlet</servlet-name>
+		<url-pattern>/witapi</url-pattern>
+	</servlet-mapping>
 </web-app>
